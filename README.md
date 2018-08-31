@@ -1,0 +1,2 @@
+# ohana
+Personal finances assistant
