@@ -18,6 +18,11 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # =========================================================================== #
 
+# Used to parse any arguments that could come from command line
+# and initialize Ohana with them.
+#
+# @author Carlos Garcia Velasco <mail.charlitos@gmail.com>
+
 require_relative 'ohana_init'
 
 args = Hash[ARGV.flat_map { |s| s.scan(/--?([^=\s]+)(?:=(\S+))?/) }]

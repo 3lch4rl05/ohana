@@ -24,13 +24,13 @@ module OHANA
   class OhanaMenu
 
     def self.main_menu()
-      puts "\nPlease, select an option to proceed:\n\n"
+      puts "\nPlease, select an option to proceed:\n".magenta.underline
       puts "1. Automatic fixed expenses estimation."
       puts "2. Prepare monthly expenses summary."
       puts "9. Exit\n\n"
 
       loop do
-        print "Selection: "
+        print "Selection: ".green
         @@option = STDIN.gets
         @@option = @@option.strip!
         @@option = @@option.to_i
@@ -48,7 +48,7 @@ module OHANA
     def self.start_01()
       puts "\n\nOhana will try to estimate your fixed expenses based on "\
            "bank reports downloaded in the folder you specify.\n\n"
-      print "Bank reports location: "
+      print "Bank reports location: ".green
       $reports_folder = STDIN.gets
       $reports_folder = $reports_folder.strip!
     end

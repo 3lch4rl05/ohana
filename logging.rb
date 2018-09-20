@@ -18,6 +18,13 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # =========================================================================== #
 
+# Created to give logging util methods to Ohana. Contains frequently used
+# logging methods to facilitate and standarize the output when printing to the
+# terminal.
+#
+# @author Carlos Garcia Velasco <mail.charlitos@gmail.com>
+# @version 1.0
+
 require_relative 'pretty_backtrace'
 require 'logger'
 
@@ -49,11 +56,13 @@ end
 
 # Prints default disclaimer notice
 def print_notice()
-  puts "Ohana Copyright (C) 2018  Carlos Garcia Velasco\n\n"\
-       "This is free software and it comes with ABSOLUTELY NO WARRANTY. "\
-       "You are welcome to redistribute it under certain conditions; "\
+  puts "Ohana Copyright (C) 2018 Carlos Garcia Velasco\n".bold.underline
+  print "This is free software and it comes with "
+  print "ABSOLUTELY NO WARRANTY".red
+  print ". You are welcome to redistribute it under certain conditions; "\
        "Please refer to the GNU General Public License. It should be included "\
-       "with this software, if not, see <https://www.gnu.org/licenses/>."
+       "with this software, if not, see "
+  puts "https://www.gnu.org/licenses/".cyan
 end
 
 # Prints a header-like block to visually separate specific log sections.
@@ -85,11 +94,19 @@ def print_error_msg_exc(e,msg)
   puts " ERROR END ".red.center(100,'#')
 end
 
+# Formats a floating number accordingly so it can be printed as: '***,***.**'
+def format_float(amnt)
+  formatted_amnt = '%.2f' % amnt
+  formatted_amnt = formatted_amnt.gsub(/(\d)(?=\d{3}+(?:\.|$))(\d{3}\..*)?/,'\1,\2')
+end
+
 at_exit do
   puts "\nFinishing execution...\n\n".italic
 end
 
 # Color definitions if ANSI color is supported. (Unix only)
+# @see https://stackoverflow.com/a/16363159
+#   Original author: Ivan Black
 class String
   def black;          "\e[30m#{self}\e[0m" end
   def red;            "\e[31m#{self}\e[0m" end

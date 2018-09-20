@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: OHANA::OhanaOps
+  
+    &mdash; Documentation by YARD 0.9.16
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "OHANA::OhanaOps";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (O)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../OHANA.html" title="OHANA (module)">OHANA</a></span></span>
+     &raquo; 
+    <span class="title">OhanaOps</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: OHANA::OhanaOps
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">OHANA::OhanaOps</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>ohana_ops.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>This class is responsible for all the operations required by the rest of
+the Ohana module. All the calculations, reading files, etc., happens in
+this class allowing other components to consume whatever these operations
+might yield at the end.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Carlos Garcia Velasco &lt;mail.charlitos@gmail.com&gt;</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#estimate_fixed_expenses-class_method" title="estimate_fixed_expenses (class method)">.<strong>estimate_fixed_expenses</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Used to calculate the estimates for every fixed expense category specified
+in the app properties file under the &#39;fe&#39; section.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_providers_as_set-class_method" title="get_providers_as_set (class method)">.<strong>get_providers_as_set</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Used to retrieve all the names of the &#39;fixed expenses&#39; providers
+listed in the app properties file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_transactions_for_acct-class_method" title="get_transactions_for_acct (class method)">.<strong>get_transactions_for_acct</strong>(bank, acct, start_date = nil, end_date = Time.now())  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This function is responsible for reading CSV files located inside the
+reports folder for the bank and account specified.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prepare_cc_for_month-class_method" title="prepare_cc_for_month (class method)">.<strong>prepare_cc_for_month</strong>(month)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This function is intended to execute all the steps necessary to prepare the
+credit cards summary (specified under the &#39;accounts&#39; section in the
+app properties file).</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="estimate_fixed_expenses-class_method">
+  
+    .<strong>estimate_fixed_expenses</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Used to calculate the estimates for every fixed expense category specified
+in the app properties file under the &#39;fe&#39; section. It first obtains
+a list of all the transactions from the reports available in the reports
+folder. After that, it tries to estimate what is the amount spent monthly
+in average for every fixed expense specified. Optionally, this function
+will also update a Google spreadsheet with the calculated results.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 176</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_estimate_fixed_expenses'>estimate_fixed_expenses</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nEstimating fixed expenses...\n</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_cyan'>cyan</span>
+
+  <span class='comment'># First we create a map that will store all the totals for each provider
+</span>  <span class='comment'># listed under the &#39;fe&#39; section in the app properties file. This is a map
+</span>  <span class='comment'># of maps using the name of the provider as the main key.
+</span>  <span class='id identifier rubyid_totals_per_provider'>totals_per_provider</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_prov_names_set'>prov_names_set</span> <span class='op'>=</span> <span class='id identifier rubyid_get_providers_as_set'>get_providers_as_set</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_prov_names_set'>prov_names_set</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+    <span class='id identifier rubyid_totals_per_provider'>totals_per_provider</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='kw'>end</span>
+
+  <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>banks</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_bank'>bank</span><span class='op'>|</span>
+    <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>accounts</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_bank'>bank</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_acct'>acct</span><span class='op'>|</span>
+
+      <span class='comment'># We get all the transactions for the bank and account specified.
+</span>      <span class='id identifier rubyid_transactions'>transactions</span> <span class='op'>=</span> <span class='id identifier rubyid_get_transactions_for_acct'>get_transactions_for_acct</span><span class='lparen'>(</span><span class='id identifier rubyid_bank'>bank</span><span class='comma'>,</span><span class='id identifier rubyid_acct'>acct</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_transactions'>transactions</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_transaction_info'>transaction_info</span><span class='op'>|</span>
+        <span class='id identifier rubyid_transaction'>transaction</span> <span class='op'>=</span> <span class='id identifier rubyid_transaction_info'>transaction_info</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_prov_names_set'>prov_names_set</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_provider_name'>provider_name</span><span class='op'>|</span>
+
+          <span class='comment'># If the provider&#39;s name is in the transaction description, then
+</span>          <span class='comment'># we add it to our map.
+</span>          <span class='kw'>if</span> <span class='id identifier rubyid_transaction'>transaction</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>desc</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_provider_name'>provider_name</span>
+
+            <span class='comment'># We use &quot;month-year&quot; as key for the &#39;totals_per_provider&#39; map
+</span>            <span class='comment'># so we can group them depending on the month they occured.
+</span>            <span class='id identifier rubyid_date_str'>date_str</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_transaction'>transaction</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>date</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_month'>month</span><span class='embexpr_end'>}</span><span class='tstring_content'>-</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_transaction'>transaction</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>date</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_year'>year</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+
+            <span class='comment'># We add up all the expenses for that provider in each month.
+</span>            <span class='kw'>if</span> <span class='id identifier rubyid_totals_per_provider'>totals_per_provider</span><span class='lbracket'>[</span><span class='id identifier rubyid_provider_name'>provider_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_date_str'>date_str</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+              <span class='id identifier rubyid_totals_per_provider'>totals_per_provider</span><span class='lbracket'>[</span><span class='id identifier rubyid_provider_name'>provider_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_date_str'>date_str</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_transaction'>transaction</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>amnt</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+            <span class='kw'>else</span>
+              <span class='id identifier rubyid_total_month'>total_month</span> <span class='op'>=</span> <span class='id identifier rubyid_totals_per_provider'>totals_per_provider</span><span class='lbracket'>[</span><span class='id identifier rubyid_provider_name'>provider_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_date_str'>date_str</span><span class='rbracket'>]</span>
+              <span class='id identifier rubyid_totals_per_provider'>totals_per_provider</span><span class='lbracket'>[</span><span class='id identifier rubyid_provider_name'>provider_name</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_date_str'>date_str</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_total_month'>total_month</span> <span class='op'>+</span> <span class='id identifier rubyid_transaction'>transaction</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>amnt</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+            <span class='kw'>end</span>
+          <span class='kw'>end</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># The values per expense per provider per month are merged. This means
+</span>  <span class='comment'># all of them are added up to calculate the month total for each
+</span>  <span class='comment'># category expense.
+</span>  <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fe</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expenses</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expense'>expense</span><span class='op'>|</span>
+    <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>provider</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>names</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='lbracket'>[</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+        <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='lbracket'>[</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_totals_per_provider'>totals_per_provider</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_prev_hash'>prev_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='lbracket'>[</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='lbracket'>[</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span> <span class='op'>=</span>
+            <span class='id identifier rubyid_prev_hash'>prev_hash</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_totals_per_provider'>totals_per_provider</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='lbrace'>{</span>
+              <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_prev_val'>prev_val</span><span class='comma'>,</span> <span class='id identifier rubyid_new_val'>new_val</span><span class='op'>|</span> <span class='id identifier rubyid_new_val'>new_val</span> <span class='op'>+</span> <span class='id identifier rubyid_prev_val'>prev_val</span>
+            <span class='rbrace'>}</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Once we have every month total calculated, we get the monthly average.
+</span>  <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expense'>expense</span><span class='op'>|</span>
+    <span class='id identifier rubyid_total_expense'>total_expense</span> <span class='op'>=</span> <span class='float'>0.0</span>
+    <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_date'>date</span><span class='comma'>,</span><span class='id identifier rubyid_total'>total</span><span class='op'>|</span>
+      <span class='id identifier rubyid_total_expense'>total_expense</span> <span class='op'>=</span> <span class='id identifier rubyid_total_expense'>total_expense</span> <span class='op'>+</span> <span class='id identifier rubyid_total'>total</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>month_avg</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='op'>=</span><span class='id identifier rubyid_total_expense'>total_expense</span><span class='op'>/</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Now, we clean up the list based on joined bills to avoid dups.
+</span>  <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fe</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>joined_bills</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_joined'>joined</span><span class='op'>|</span>
+    <span class='id identifier rubyid_joined_aliases'>joined_aliases</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='id identifier rubyid_joined'>joined</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_exp'>exp</span><span class='op'>|</span>
+      <span class='id identifier rubyid_exp_alias'>exp_alias</span> <span class='op'>=</span> <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fe</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expenses</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_exp'>exp</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_joined_aliases'>joined_aliases</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_exp_alias'>exp_alias</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># We format the name of joined categories. It will include a plus sign &#39;+&#39;
+</span>    <span class='comment'># between names so its easier to identify when categories were joined.
+</span>    <span class='id identifier rubyid_joined_name'>joined_name</span> <span class='op'>=</span> <span class='id identifier rubyid_joined_aliases'>joined_aliases</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> + </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='lbracket'>[</span><span class='id identifier rubyid_joined_name'>joined_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_joined'>joined</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='lparen'>(</span><span class='id identifier rubyid_joined'>joined</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_num'>num</span><span class='op'>|</span>
+      <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_joined'>joined</span><span class='lbracket'>[</span><span class='id identifier rubyid_num'>num</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nOhana</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_cyan'>cyan</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> finished analyzing the bank reports provided.\n</span><span class='tstring_end'>&quot;</span></span>\
+       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>These are the estimates based on the information available :\n\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>30</span>
+
+  <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expense'>expense</span><span class='op'>|</span>
+    <span class='id identifier rubyid_format_expense'>format_expense</span> <span class='op'>=</span> <span class='id identifier rubyid_format_float'><span class='object_link'><a href="../top-level-namespace.html#format_float-instance_method" title="#format_float (method)">format_float</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>month_avg</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_format_expense'>format_expense</span> <span class='op'>=</span> <span class='id identifier rubyid_format_expense'>format_expense</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='int'>9</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_expense_info'>expense_info</span> <span class='op'>=</span> <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fe</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expenses</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+    <span class='kw'>if</span><span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_expense_info'>expense_info</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_expense_alias'>expense_alias</span> <span class='op'>=</span> <span class='id identifier rubyid_expense_info'>expense_info</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expense_alias'>expense_alias</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>18</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> $</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_format_expense'>format_expense</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_brown'>brown</span>
+    <span class='kw'>elsif</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>18</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> $</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_format_expense'>format_expense</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_brown'>brown</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>30</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_providers_as_set-class_method">
+  
+    .<strong>get_providers_as_set</strong>  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Used to retrieve all the names of the &#39;fixed expenses&#39; providers
+listed in the app properties file. This function makes sure there are no
+duplicates in the names list. It</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Map of maps that contains all the provider names.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_providers_as_set'>get_providers_as_set</span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_prov_names_set'>prov_names_set</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fe</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expenses</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expense'>expense</span><span class='op'>|</span>
+    <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>provider</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>names</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+      <span class='id identifier rubyid_prov_names_set'>prov_names_set</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_prov_names_set'>prov_names_set</span><span class='period'>.</span><span class='id identifier rubyid_uniq!'>uniq!</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_transactions_for_acct-class_method">
+  
+    .<strong>get_transactions_for_acct</strong>(bank, acct, start_date = nil, end_date = Time.now())  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>This function is responsible for reading CSV files located inside the
+reports folder for the bank and account specified. It cat detect duplicates
+depending on the date, amount, description and the file where the
+transactions comes from. It can also filter by date depending on the
+starting date and end date specified as parameters. If
+<code>start_date</code> is not provided, it will retrieve transactions from
+the earliest date in the reports. If <code>end_date</code> is not
+specified, it will use <code>Time.now</code> as the end limit.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>bank</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Name of the bank where the reports come from.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>acct</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Name of the account for the specified bank.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>start_date</span>
+      
+      
+        <span class='type'>(<tt>Time</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>To filter by dates if necessary.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>end_date</span>
+      
+      
+        <span class='type'>(<tt>Time</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Time.now()</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>To filter by dates if necessary.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Map containing all the transactions obtained from reports.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://www.justskins.com/forums/format-number-with-comma-37369.html#post110412" target="_parent" title="Original author of formatting regex: Warren Brown">Original author of formatting regex: Warren Brown</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_transactions_for_acct'>get_transactions_for_acct</span><span class='lparen'>(</span><span class='id identifier rubyid_bank'>bank</span><span class='comma'>,</span> <span class='id identifier rubyid_acct'>acct</span><span class='comma'>,</span> <span class='id identifier rubyid_start_date'>start_date</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_end_date'>end_date</span><span class='op'>=</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_transactions'>transactions</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_reports_folder'>reports_folder</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='gvar'>$reports_folder</span><span class='comma'>,</span><span class='id identifier rubyid_bank'>bank</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>activity_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_acct'>acct</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Analyzing data for account: </span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_brown'>brown</span>
+  <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bank'>bank</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_acct'>acct</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id identifier rubyid_date_col'>date_col</span> <span class='op'>=</span> <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reports</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_bank'>bank</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_acct'>acct</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>headers</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>column</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_date_format'>date_format</span> <span class='op'>=</span> <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reports</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_bank'>bank</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_acct'>acct</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>headers</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>format</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_desc_col'>desc_col</span> <span class='op'>=</span> <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reports</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_bank'>bank</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_acct'>acct</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>headers</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>column</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_amnt_col'>amnt_col</span> <span class='op'>=</span> <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>reports</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_bank'>bank</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_acct'>acct</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>headers</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>amount</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>column</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+
+  <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_glob'>glob</span><span class='lparen'>(</span><span class='id identifier rubyid_reports_folder'>reports_folder</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/*.{csv,CSV}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_report'>report</span><span class='op'>|</span>
+    <span class='id identifier rubyid_file_name'>file_name</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_report'>report</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_duplicates'>duplicates</span> <span class='op'>=</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nInspecting file: </span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_brown'>brown</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file_name'>file_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\nPossible duplicates found:</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>30</span>
+    <span class='const'>CSV</span><span class='period'>.</span><span class='id identifier rubyid_foreach'>foreach</span><span class='lparen'>(</span><span class='id identifier rubyid_report'>report</span><span class='comma'>,</span> <span class='symbol'>:headers</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_row'>row</span><span class='op'>|</span>
+
+      <span class='id identifier rubyid_trans_date'>trans_date</span> <span class='op'>=</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_strptime'>strptime</span><span class='lparen'>(</span><span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='id identifier rubyid_date_col'>date_col</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_date_format'>date_format</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_trans_time'>trans_time</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_trans_date'>trans_date</span><span class='period'>.</span><span class='id identifier rubyid_year'>year</span><span class='comma'>,</span><span class='id identifier rubyid_trans_date'>trans_date</span><span class='period'>.</span><span class='id identifier rubyid_month'>month</span><span class='comma'>,</span><span class='id identifier rubyid_trans_date'>trans_date</span><span class='period'>.</span><span class='id identifier rubyid_day'>day</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_to_include'>to_include</span> <span class='op'>=</span> <span class='id identifier rubyid_trans_time'>trans_time</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_end_date'>end_date</span>
+
+      <span class='kw'>if</span><span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_start_date'>start_date</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_to_include'>to_include</span> <span class='op'>=</span> <span class='id identifier rubyid_trans_time'>trans_time</span><span class='period'>.</span><span class='id identifier rubyid_between?'>between?</span><span class='lparen'>(</span><span class='id identifier rubyid_start_date'>start_date</span><span class='comma'>,</span><span class='id identifier rubyid_end_date'>end_date</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+
+      <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_to_include'>to_include</span><span class='rparen'>)</span>
+
+        <span class='id identifier rubyid_row_data'>row_data</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+        <span class='id identifier rubyid_row_data'>row_data</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_trans_date'>trans_date</span>
+        <span class='id identifier rubyid_row_data'>row_data</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>desc</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='id identifier rubyid_desc_col'>desc_col</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_row_data'>row_data</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>amnt</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='id identifier rubyid_amnt_col'>amnt_col</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span>
+
+        <span class='comment'># We use date, description, amount and a counter to build the
+</span>        <span class='comment'># key name for every transaction added to the transactions map.
+</span>        <span class='id identifier rubyid_row_key'>row_key</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='id identifier rubyid_date_col'>date_col</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='id identifier rubyid_desc_col'>desc_col</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_row_data'>row_data</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>amnt</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>#?1</span><span class='tstring_end'>&quot;</span></span>
+
+        <span class='comment'># If the key is present (not null) in transactions map, means that
+</span>        <span class='comment'># there is another transaction with same date, description and
+</span>        <span class='comment'># ammount in the map.
+</span>        <span class='kw'>if</span><span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_row_key'>row_key</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span>
+          <span class='id identifier rubyid_prev_row'>prev_row</span> <span class='op'>=</span> <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_row_key'>row_key</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+          <span class='id identifier rubyid_formatted_amnt'>formatted_amnt</span> <span class='op'>=</span> <span class='id identifier rubyid_format_float'><span class='object_link'><a href="../top-level-namespace.html#format_float-instance_method" title="#format_float (method)">format_float</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_prev_row'>prev_row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>amnt</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+          <span class='id identifier rubyid_key_output'>key_output</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_prev_row'>prev_row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>  </span><span class='tstring_end'>&quot;</span></span>\
+                       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_prev_row'>prev_row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>desc</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>55</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>\
+                       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_formatted_amnt'>formatted_amnt</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+          <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_key_output'>key_output</span>
+
+          <span class='comment'># If we find a possible duplicate (same date, amount and description)
+</span>          <span class='comment'># and it comes from a different CSV file, we don&#39;t add it to the
+</span>          <span class='comment'># transactions map because it is more probable for it to be an
+</span>          <span class='comment'># actual duplicate but from a different file.
+</span>          <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_row_key'>row_key</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span>
+            <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>     SKIPPED</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>22</span><span class='rparen'>)</span>
+          <span class='kw'>elsif</span>
+
+            <span class='comment'># If the duplicate comes from the same file, it is less probable
+</span>            <span class='comment'># that it is an actual duplicate but a transaction that just
+</span>            <span class='comment'># happens to occur twice. If it is in fact a duplicate, then it
+</span>            <span class='comment'># means there is an issue with the file that the user needs to fix.
+</span>            <span class='id identifier rubyid_counter'>counter</span> <span class='op'>=</span> <span class='int'>0</span>
+            <span class='id identifier rubyid_new_key'>new_key</span> <span class='op'>=</span> <span class='id identifier rubyid_row_key'>row_key</span>
+            <span class='id identifier rubyid_trans_null'>trans_null</span> <span class='op'>=</span> <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_new_key'>new_key</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+            <span class='comment'># To make sure we include all the transactions that occured
+</span>            <span class='comment'># more than once at the same time, with same amount and same
+</span>            <span class='comment'># description, we iterate through all these transactions using
+</span>            <span class='comment'># the counter in the key of the transaction.
+</span>            <span class='kw'>while</span><span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_trans_null'>trans_null</span><span class='rparen'>)</span> <span class='kw'>do</span>
+              <span class='id identifier rubyid_splitted'>splitted</span> <span class='op'>=</span> <span class='id identifier rubyid_new_key'>new_key</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+              <span class='id identifier rubyid_counter'>counter</span> <span class='op'>=</span> <span class='id identifier rubyid_splitted'>splitted</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>+</span> <span class='int'>1</span>
+              <span class='id identifier rubyid_new_key'>new_key</span> <span class='op'>=</span> <span class='id identifier rubyid_splitted'>splitted</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#?</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_counter'>counter</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+              <span class='id identifier rubyid_trans_null'>trans_null</span> <span class='op'>=</span> <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_new_key'>new_key</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+            <span class='kw'>end</span>
+
+            <span class='comment'># ... and when we find a counter value that has not been used
+</span>            <span class='comment'># we create a new entry in the map for this transaction using
+</span>            <span class='comment'># the new key.
+</span>            <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_new_key'>new_key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+            <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_new_key'>new_key</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_file_name'>file_name</span>
+            <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_new_key'>new_key</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_row_data'>row_data</span>
+            <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>     ADDED</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_green'>green</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>22</span><span class='rparen'>)</span>
+
+          <span class='kw'>end</span>
+          <span class='id identifier rubyid_duplicates'>duplicates</span><span class='op'>+=</span><span class='int'>1</span>
+
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_row_key'>row_key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+          <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_row_key'>row_key</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_file_name'>file_name</span>
+          <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_row_key'>row_key</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_row_data'>row_data</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_duplicates'>duplicates</span><span class='embexpr_end'>}</span><span class='tstring_content'> duplicates found.</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_transactions'>transactions</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prepare_cc_for_month-class_method">
+  
+    .<strong>prepare_cc_for_month</strong>(month)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>This function is intended to execute all the steps necessary to prepare the
+credit cards summary (specified under the &#39;accounts&#39; section in the
+app properties file). Can also (optionally) be set up to update a Google
+spreadsheet with the calculated results.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>month</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The month we want the summary prepared for.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+287
+288
+289</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 287</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_prepare_cc_for_month'>prepare_cc_for_month</span><span class='lparen'>(</span><span class='id identifier rubyid_month'>month</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Preparing details for credit cards for month\n...</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Thu Sep 20 14:00:48 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.16 (ruby-2.4.1).
+</div>
+
+    </div>
+  </body>
+</html>
