@@ -62,6 +62,16 @@ module OHANA
       $reports_folder = $reports_folder.strip!
     end
 
+    def self.confirm_sheet_modif()
+      puts "Do you want to " + "update your spreadsheet".cyan + " (specified in the "\
+           "app properties) with these values? (default=y)"
+      print "[y/n]: ".green
+      conf_val = STDIN.gets
+      conf_val.chomp!
+      conf_val = "Y" if conf_val.nil? || conf_val.empty?
+      conf_val.upcase
+    end
+
     def self.option
       @@option
     end

@@ -19,6 +19,7 @@
 # =========================================================================== #
 
 require_relative 'logging'
+require_relative 'ohana_menu'
 require 'fileutils'
 require 'csv'
 
@@ -34,7 +35,7 @@ module OHANA
 
     # Used to retrieve all the names of the 'fixed expenses' providers listed
     # in the app properties file. This function makes sure there are no
-    # duplicates in the names list. It
+    # duplicates in the names list.
     #
     # @return [Hash] Map of maps that contains all the provider names.
     def self.get_providers_as_set()
@@ -62,8 +63,6 @@ module OHANA
     # @param start_date [Time] To filter by dates if necessary.
     # @param end_date [Time] To filter by dates if necessary.
     # @return [Hash] Map containing all the transactions obtained from reports.
-    # @see http://www.justskins.com/forums/format-number-with-comma-37369.html#post110412
-    #   Original author of formatting regex: Warren Brown
     def self.get_transactions_for_acct(bank, acct, start_date=nil, end_date=Time.now())
 
       transactions = Hash.new
@@ -260,7 +259,7 @@ module OHANA
       end
 
       puts "\nOhana".cyan + " finished analyzing the bank reports provided.\n"\
-           "These are the estimates based on the information available :\n\n"
+           "These are the estimates based on the information available:\n\n"
       puts "-"*30
 
       totals_per_expense.each do |expense|
@@ -276,6 +275,11 @@ module OHANA
       end
       puts "-"*30
       puts "\n"
+      confirm = OhanaMenu.confirm_sheet_modif()
+      if "Y" == confirm
+        sheet_name = "my sheet"
+        puts "Updating values in sheet: #{sheet_name}"
+      end
     end
 
     # This function is intended to execute all the steps necessary to prepare

@@ -95,6 +95,8 @@ def print_error_msg_exc(e,msg)
 end
 
 # Formats a floating number accordingly so it can be printed as: '***,***.**'
+# @see http://www.justskins.com/forums/format-number-with-comma-37369.html#post110412
+#   Original author of formatting regex: Warren Brown
 def format_float(amnt)
   formatted_amnt = '%.2f' % amnt
   formatted_amnt = formatted_amnt.gsub(/(\d)(?=\d{3}+(?:\.|$))(\d{3}\..*)?/,'\1,\2')
