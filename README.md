@@ -1,7 +1,7 @@
 # Ohana v0.0.1
 #### Personal finances assistant.
 
-![Asking for money GIF](https://gph.is/1tVhNGF)
+![Asking for money GIF](https://media.giphy.com/media/j3x5hjUoXIesM/giphy.gif)  
 
 We all know that **Ohana** means *'family'* in Hawaiian culture :family:. That's the reason why I decided to give this application that name. This application is meant for the personal and private use by individuals or families to help them manage their home finances :moneybag:.
 
