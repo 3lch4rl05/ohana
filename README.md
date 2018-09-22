@@ -17,10 +17,10 @@ Do you buy lot of stuff from Amazon? :package: Would you like to get a summary r
 
 So, in summary, what can Ohana do?
 
-__1.__ [x] Estimate your monthly fixed expenses.  
-__2.__ [ ] Help you prepare your monthly credit card usage report.  
-__3.__ [ ] It can optionally connect to Google spreadsheets and update specific spreadsheets with the calculated data.  
-__4.__ [ ] It can optionally connect to Google gmail to get emails from Amazon orders and match them against the orders reports downloaded from Amazon.com and give you a summary report of your purchases.
+- [x] Estimate your monthly fixed expenses.  
+- [ ] Help you prepare your monthly credit card usage report.  
+- [ ] It can optionally connect to Google spreadsheets and update specific spreadsheets with the calculated data.  
+- [ ] It can optionally connect to Google gmail to get emails from Amazon orders and match them against the orders reports downloaded from Amazon.com and give you a summary report of your purchases.
 
 **NOTE:** This is still work in progress. I'm currently working on all these features myself and I will keep updating this repo as frequently as possible.
 
