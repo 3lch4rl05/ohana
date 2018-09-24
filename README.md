@@ -15,17 +15,16 @@ To keep Ohana simple, I decided that it would read all the bank and accounts inf
 
 You can also decide if you want Ohana to connect to a Google spreadsheet and update it with the information that's been calculated. No need to give Ohana your user and password, Google takes care of that so your access information remains private all the time.
 
-Do you buy lot of stuff from Amazon? :package: Would you like to get a summary report of your Amazon purchases and orders? Do you have an Amazon rewards credit card? :credit_card: Ohana can also read from your orders report from Amazon (downloadable from Amazon in CSV format as well, so, no need to connect to Amazon directly!) and match them with emails from Amazon order from your gmail account to give you a summary of your expenses and rewards points spent in a period of time.
+Do you buy lot of stuff from Amazon? :package: Would you like to get a summary report of your Amazon purchases and orders? Do you have an Amazon rewards credit card? :credit_card: Ohana can also read from your orders report from Amazon (downloadable from Amazon in CSV format as well, so, no need to connect to Amazon directly!) and match them with your Amazon orders emails from your gmail account to give you a summary of your expenses and rewards points spent in a period of time.
 
 So, in summary, what can Ohana do?
 
 - [x] Estimate your monthly fixed expenses.  
 - [ ] Help you prepare your monthly credit card usage report.  
-- [ ] It can optionally connect to Google spreadsheets and update specific spreadsheets with the calculated data.  
-- [ ] It can optionally connect to Google gmail to get emails from Amazon orders and match them against the orders reports downloaded from Amazon.com and give you a summary report of your purchases.
+- [ ] It can connect to Google spreadsheets and update specific spreadsheets with the calculated data.  
+- [ ] It can connect to Google gmail to get information about your Amazon orders and give you a summary report.
 
-**NOTE:** This is still work in progress. I'm currently working on all these features myself and I will keep updating this repo as frequently as possible.
-
+**NOTE:** This is still work in progress. I'm currently working on all these features myself and I will keep updating this repo as frequently as possible. You will know what features are ready by looking at the checkmarks on the list of features.
 
 **Sources:**
 

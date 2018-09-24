@@ -25,6 +25,7 @@ require 'csv'
 
 module OHANA
 
+  ##
   # This class is responsible for all the operations required by the rest
   # of the Ohana module. All the calculations, reading files, etc., happens
   # in this class allowing other components to consume whatever these
@@ -33,6 +34,7 @@ module OHANA
   # @author Carlos Garcia Velasco <mail.charlitos@gmail.com>
   class OhanaOps
 
+    ##
     # Used to retrieve all the names of the 'fixed expenses' providers listed
     # in the app properties file. This function makes sure there are no
     # duplicates in the names list.
@@ -49,6 +51,7 @@ module OHANA
       prov_names_set.uniq!
     end
 
+    ##
     # This function is responsible for reading CSV files located inside
     # the reports folder for the bank and account specified. It cat detect
     # duplicates depending on the date, amount, description and the file where
@@ -165,6 +168,7 @@ module OHANA
       transactions
     end
 
+    ##
     # Used to calculate the estimates for every fixed expense category
     # specified in the app properties file under the 'fe' section. It first
     # obtains a list of all the transactions from the reports available in
@@ -282,6 +286,7 @@ module OHANA
       end
     end
 
+    ##
     # This function is intended to execute all the steps necessary to prepare
     # the credit cards summary (specified under the 'accounts' section in the
     # app properties file). Can also (optionally) be set up to update
