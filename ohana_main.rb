@@ -28,3 +28,7 @@ require_relative 'ohana_init'
 args = Hash[ARGV.flat_map { |s| s.scan(/--?([^=\s]+)(?:=(\S+))?/) }]
 ohana = OHANA::OhanaInit.new
 ohana.init(args)
+
+at_exit do
+  puts "\nFinishing execution...\n\n".italic
+end
