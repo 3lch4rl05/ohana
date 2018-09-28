@@ -18,7 +18,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # =========================================================================== #
 
-require_relative 'logging'
+require_relative 'ohana_out'
+require 'fileutils'
 
 module OHANA
   class OhanaMenu
@@ -35,7 +36,7 @@ module OHANA
         @@option = @@option.strip!
         @@option = @@option.to_i
         break if @@option >= 1 && @@option <=9
-        print "\nIncorrect selection, please try again.\n".red
+        print "Incorrect selection, please try again.\n\n".red
       end
 
       if @@option == 1
@@ -48,9 +49,15 @@ module OHANA
     def self.start_01()
       puts "\n\nOhana will try to estimate your fixed expenses based on "\
            "bank reports downloaded in the folder you specify.\n\n"
-      print "Bank reports location: ".green
-      $reports_folder = STDIN.gets
-      $reports_folder = $reports_folder.strip!
+
+      loop do
+        print "Bank reports location: ".green
+        $reports_folder = STDIN.gets
+        $reports_folder = $reports_folder.strip!
+        break if Dir.exist?($reports_folder)
+        print "That folder does not exist, please specify it again.\n\n".red
+      end
+
     end
 
     def self.start_02()
@@ -63,9 +70,7 @@ module OHANA
     end
 
     def self.confirm_sheet_modif()
-      puts "Do you want to " + "update your spreadsheet".cyan + " (specified in the "\
-           "app properties) with these values? (default=y)"
-      print "[y/n]: ".green
+      print "Update your spreadsheet".cyan + " with these values? " + "(y/n): ".green
       conf_val = STDIN.gets
       conf_val.chomp!
       conf_val = "Y" if conf_val.nil? || conf_val.empty?
