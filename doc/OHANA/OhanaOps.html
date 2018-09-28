@@ -245,6 +245,56 @@ app properties file).</p>
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#quick_nan_check-class_method" title="quick_nan_check (class method)">.<strong>quick_nan_check</strong>(results)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Recursive function that performs a check on NaN values that could mean
+something was wrong with the calculations performed.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_gss_fixed_expenses-class_method" title="update_gss_fixed_expenses (class method)">.<strong>update_gss_fixed_expenses</strong>(totals_per_expense)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This function allows Ohana to update the desired spreadsheet with the
+freshly calculated fixed expenses estimation data.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -285,31 +335,6 @@ will also update a Google spreadsheet with the calculated results.</p>
       <pre class="lines">
 
 
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
 201
 202
 203
@@ -388,10 +413,53 @@ will also update a Google spreadsheet with the calculated results.</p>
 276
 277
 278
-279</pre>
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 176</span>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 201</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_estimate_fixed_expenses'>estimate_fixed_expenses</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nEstimating fixed expenses...\n</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_cyan'>cyan</span>
@@ -479,23 +547,41 @@ will also update a Google spreadsheet with the calculated results.</p>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nOhana</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_cyan'>cyan</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> finished analyzing the bank reports provided.\n</span><span class='tstring_end'>&quot;</span></span>\
-       <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>These are the estimates based on the information available :\n\n</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>30</span>
+  <span class='comment'># We perform a basic check of the results before presenting them to the
+</span>  <span class='comment'># user just to make sure there are no NaN values in final results.
+</span>  <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_quick_nan_check'>quick_nan_check</span><span class='lparen'>(</span><span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='rparen'>)</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expense'>expense</span><span class='op'>|</span>
-    <span class='id identifier rubyid_format_expense'>format_expense</span> <span class='op'>=</span> <span class='id identifier rubyid_format_float'><span class='object_link'><a href="../top-level-namespace.html#format_float-instance_method" title="#format_float (method)">format_float</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>month_avg</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_format_expense'>format_expense</span> <span class='op'>=</span> <span class='id identifier rubyid_format_expense'>format_expense</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='int'>9</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_expense_info'>expense_info</span> <span class='op'>=</span> <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fe</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expenses</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
-    <span class='kw'>if</span><span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_expense_info'>expense_info</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_expense_alias'>expense_alias</span> <span class='op'>=</span> <span class='id identifier rubyid_expense_info'>expense_info</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expense_alias'>expense_alias</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>18</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> $</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_format_expense'>format_expense</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_brown'>brown</span>
-    <span class='kw'>elsif</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>18</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> $</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_format_expense'>format_expense</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_brown'>brown</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nOhana</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_cyan'>cyan</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> finished analyzing the bank reports provided.\n</span><span class='tstring_end'>&quot;</span></span>\
+         <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>These are the estimates based on the information available:\n\n</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>30</span>
+
+    <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expense'>expense</span><span class='op'>|</span>
+      <span class='id identifier rubyid_format_expense'>format_expense</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format_float'><span class='object_link'><a href="OhanaOut.html#format_float-class_method" title="OHANA::OhanaOut.format_float (method)">format_float</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>month_avg</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_format_expense'>format_expense</span> <span class='op'>=</span> <span class='id identifier rubyid_format_expense'>format_expense</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='int'>9</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_expense_info'>expense_info</span> <span class='op'>=</span> <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fe</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expenses</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+      <span class='kw'>if</span><span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_expense_info'>expense_info</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_expense_alias'>expense_alias</span> <span class='op'>=</span> <span class='id identifier rubyid_expense_info'>expense_info</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alias</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expense_alias'>expense_alias</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>18</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> $</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_format_expense'>format_expense</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_brown'>brown</span>
+      <span class='kw'>elsif</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>18</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> $</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_format_expense'>format_expense</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_brown'>brown</span>
+      <span class='kw'>end</span>
     <span class='kw'>end</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>30</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='comment'># Now, we ask the user if he would like to update the spreadsheet with
+</span>    <span class='comment'># the calculated data.
+</span>    <span class='id identifier rubyid_confirm'>confirm</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OhanaMenu.html" title="OHANA::OhanaMenu (class)">OhanaMenu</a></span></span><span class='period'>.</span><span class='id identifier rubyid_confirm_sheet_modif'><span class='object_link'><a href="OhanaMenu.html#confirm_sheet_modif-class_method" title="OHANA::OhanaMenu.confirm_sheet_modif (method)">confirm_sheet_modif</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Y</span><span class='tstring_end'>&quot;</span></span> <span class='op'>==</span> <span class='id identifier rubyid_confirm'>confirm</span>
+      <span class='id identifier rubyid_update_gss_fixed_expenses'>update_gss_fixed_expenses</span><span class='lparen'>(</span><span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\nSeems that some of the results were not calculated successfully :(</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Please make sure folder contains </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>valid reports and valid data</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_cyan'>cyan</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.\n</span><span class='tstring_end'>&quot;</span></span>
+
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>30</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -516,7 +602,7 @@ will also update a Google spreadsheet with the calculated results.</p>
     
 <p>Used to retrieve all the names of the &#39;fixed expenses&#39; providers
 listed in the app properties file. This function makes sure there are no
-duplicates in the names list. It</p>
+duplicates in the names list.</p>
 
 
   </div>
@@ -548,19 +634,19 @@ duplicates in the names list. It</p>
       <pre class="lines">
 
 
-40
-41
-42
-43
 44
 45
 46
 47
 48
-49</pre>
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_providers_as_set'>get_providers_as_set</span><span class='lparen'>(</span><span class='rparen'>)</span>
 
@@ -694,43 +780,12 @@ specified, it will use <code>Time.now</code> as the end limit.</p>
   
 </ul>
 
-  <p class="tag_title">See Also:</p>
-  <ul class="see">
-    
-      <li><a href="http://www.justskins.com/forums/format-number-with-comma-37369.html#post110412" target="_parent" title="Original author of formatting regex: Warren Brown">Original author of formatting regex: Warren Brown</a></li>
-    
-  </ul>
-
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
 91
 92
 93
@@ -807,10 +862,34 @@ specified, it will use <code>Time.now</code> as the end limit.</p>
 164
 165
 166
-167</pre>
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_transactions_for_acct'>get_transactions_for_acct</span><span class='lparen'>(</span><span class='id identifier rubyid_bank'>bank</span><span class='comma'>,</span> <span class='id identifier rubyid_acct'>acct</span><span class='comma'>,</span> <span class='id identifier rubyid_start_date'>start_date</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_end_date'>end_date</span><span class='op'>=</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='rparen'>)</span>
 
@@ -857,7 +936,7 @@ specified, it will use <code>Time.now</code> as the end limit.</p>
 </span>        <span class='comment'># ammount in the map.
 </span>        <span class='kw'>if</span><span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_row_key'>row_key</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span>
           <span class='id identifier rubyid_prev_row'>prev_row</span> <span class='op'>=</span> <span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_row_key'>row_key</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
-          <span class='id identifier rubyid_formatted_amnt'>formatted_amnt</span> <span class='op'>=</span> <span class='id identifier rubyid_format_float'><span class='object_link'><a href="../top-level-namespace.html#format_float-instance_method" title="#format_float (method)">format_float</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_prev_row'>prev_row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>amnt</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+          <span class='id identifier rubyid_formatted_amnt'>formatted_amnt</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format_float'><span class='object_link'><a href="OhanaOut.html#format_float-class_method" title="OHANA::OhanaOut.format_float (method)">format_float</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_prev_row'>prev_row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>amnt</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
           <span class='id identifier rubyid_key_output'>key_output</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_prev_row'>prev_row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>date</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>  </span><span class='tstring_end'>&quot;</span></span>\
                        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_prev_row'>prev_row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>desc</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>55</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>\
                        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>$</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_formatted_amnt'>formatted_amnt</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -869,7 +948,7 @@ specified, it will use <code>Time.now</code> as the end limit.</p>
 </span>          <span class='comment'># actual duplicate but from a different file.
 </span>          <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_transactions'>transactions</span><span class='lbracket'>[</span><span class='id identifier rubyid_row_key'>row_key</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='id identifier rubyid_file_name'>file_name</span><span class='rparen'>)</span>
             <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>     SKIPPED</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span><span class='period'>.</span><span class='id identifier rubyid_ljust'>ljust</span><span class='lparen'>(</span><span class='int'>22</span><span class='rparen'>)</span>
-          <span class='kw'>elsif</span>
+          <span class='kw'>else</span>
 
             <span class='comment'># If the duplicate comes from the same file, it is less probable
 </span>            <span class='comment'># that it is an actual duplicate but a transaction that just
@@ -967,15 +1046,272 @@ spreadsheet with the calculated results.</p>
       <pre class="lines">
 
 
-287
-288
-289</pre>
+394
+395
+396</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 287</span>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 394</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_prepare_cc_for_month'>prepare_cc_for_month</span><span class='lparen'>(</span><span class='id identifier rubyid_month'>month</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Preparing details for credit cards for month\n...</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="quick_nan_check-class_method">
+  
+    .<strong>quick_nan_check</strong>(results)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Recursive function that performs a check on NaN values that could mean
+something was wrong with the calculations performed.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>results</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Results object to search NaN values from.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_quick_nan_check'>quick_nan_check</span><span class='lparen'>(</span><span class='id identifier rubyid_results'>results</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_results'>results</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_result'>result</span><span class='op'>|</span>
+    <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_success'>success</span> <span class='op'>=</span> <span class='id identifier rubyid_quick_nan_check'>quick_nan_check</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='rparen'>)</span>
+      <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_success'>success</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_success'>success</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Numeric</span><span class='rparen'>)</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='op'>!</span><span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='period'>.</span><span class='id identifier rubyid_nan?'>nan?</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update_gss_fixed_expenses-class_method">
+  
+    .<strong>update_gss_fixed_expenses</strong>(totals_per_expense)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>This function allows Ohana to update the desired spreadsheet with the
+freshly calculated fixed expenses estimation data. For this, we use the
+ranges specified in the app properties file to determine where to inject
+this information.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>totals_per_expense</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Map with the calculated fixed expenses estimations.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://stackoverflow.com/a/14091786" target="_parent" title="Original author of scan regex: sawa">Original author of scan regex: sawa</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'ohana_ops.rb', line 333</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_update_gss_fixed_expenses'>update_gss_fixed_expenses</span><span class='lparen'>(</span><span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_home_finances'>home_finances</span> <span class='op'>=</span> <span class='gvar'>$props</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>google</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>spread_sheets</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>home_finances</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_reseg_sheet'>reseg_sheet</span> <span class='op'>=</span> <span class='id identifier rubyid_home_finances'>home_finances</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sheets</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resumen_egresos</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_range_for_names'>range_for_names</span> <span class='op'>=</span> <span class='id identifier rubyid_reseg_sheet'>reseg_sheet</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ranges</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fe</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>names</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+
+  <span class='comment'># We need to obtain the names of the expenses from the spreadsheet to
+</span>  <span class='comment'># match them against the ones present in the app properties file. This
+</span>  <span class='comment'># is for the joined bills compound names and not for the single fixed
+</span>  <span class='comment'># expense provider names. For the latter, the appropiate cell to be
+</span>  <span class='comment'># modified is already specified under the &#39;google&#39; section in the
+</span>  <span class='comment'># properties file.
+</span>  <span class='id identifier rubyid_exp_names'>exp_names</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OhanaGoogleSheets.html" title="OHANA::OhanaGoogleSheets (class)">OhanaGoogleSheets</a></span></span><span class='period'>.</span><span class='id identifier rubyid_read_cell_values'><span class='object_link'><a href="OhanaGoogleSheets.html#read_cell_values-class_method" title="OHANA::OhanaGoogleSheets.read_cell_values (method)">read_cell_values</a></span></span><span class='lparen'>(</span>
+    <span class='id identifier rubyid_home_finances'>home_finances</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_reseg_sheet'>reseg_sheet</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>!</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_range_for_names'>range_for_names</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+  <span class='comment'># We iterate the data to get the calculated estimate for each expense
+</span>  <span class='comment'># type. For every different type of expense, Ohana will get its
+</span>  <span class='comment'># respective cell from application properties file.
+</span>  <span class='id identifier rubyid_totals_per_expense'>totals_per_expense</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expense'>expense</span><span class='op'>|</span>
+    <span class='id identifier rubyid_exp_cell'>exp_cell</span> <span class='op'>=</span> <span class='id identifier rubyid_reseg_sheet'>reseg_sheet</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ranges</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fe</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_month_avg'>month_avg</span> <span class='op'>=</span> <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>month_avg</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_val_array'>val_array</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_month_avg'>month_avg</span>
+    <span class='id identifier rubyid_val_array'>val_array</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_values'>values</span>
+
+    <span class='comment'># For the &#39;joined-bills&#39; calculated estimates, this code will try to
+</span>    <span class='comment'># discover which one is the correct cell to update matching the alias
+</span>    <span class='comment'># with whatever is in the name&#39;s colum.
+</span>    <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_exp_cell'>exp_cell</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span> <span class='kw'>then</span>
+      <span class='id identifier rubyid_cell_count'>cell_count</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span>
+      <span class='id identifier rubyid_expense_alias'>expense_alias</span> <span class='op'>=</span> <span class='id identifier rubyid_expense'>expense</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_exp_names'>exp_names</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+        <span class='id identifier rubyid_cell_count'>cell_count</span> <span class='op'>=</span> <span class='id identifier rubyid_cell_count'>cell_count</span> <span class='op'>+</span> <span class='int'>1</span>
+        <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_expense_alias'>expense_alias</span><span class='rparen'>)</span>
+          <span class='id identifier rubyid_breakfr'>breakfr</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+
+      <span class='comment'># First we obtain the specified range for the names column. We then
+</span>      <span class='comment'># split it to get the starting cell, we separate the columns from the
+</span>      <span class='comment'># row numbers with the regex,
+</span>      <span class='id identifier rubyid_first_in_range_info'>first_in_range_info</span> <span class='op'>=</span> <span class='id identifier rubyid_range_for_names'>range_for_names</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>:</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\d+|\D+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_desired_col'>desired_col</span> <span class='op'>=</span> <span class='id identifier rubyid_first_in_range_info'>first_in_range_info</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_next!'>next!</span>
+      <span class='id identifier rubyid_desired_row'>desired_row</span> <span class='op'>=</span> <span class='id identifier rubyid_first_in_range_info'>first_in_range_info</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>+</span> <span class='id identifier rubyid_cell_count'>cell_count</span>
+      <span class='id identifier rubyid_exp_cell'>exp_cell</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_desired_col'>desired_col</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_desired_row'>desired_row</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+
+    <span class='const'><span class='object_link'><a href="OhanaGoogleSheets.html" title="OHANA::OhanaGoogleSheets (class)">OhanaGoogleSheets</a></span></span><span class='period'>.</span><span class='id identifier rubyid_write_cell_values'><span class='object_link'><a href="OhanaGoogleSheets.html#write_cell_values-class_method" title="OHANA::OhanaGoogleSheets.write_cell_values (method)">write_cell_values</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_home_finances'>home_finances</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_reseg_sheet'>reseg_sheet</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>!</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_exp_cell'>exp_cell</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_val_array'>val_array</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Done!</span><span class='tstring_end'>&quot;</span></span>
+
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -987,7 +1323,7 @@ spreadsheet with the calculated results.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Sep 20 14:00:48 2018 by
+  Generated on Thu Sep 27 22:00:26 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.4.1).
 </div>
