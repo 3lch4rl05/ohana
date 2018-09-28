@@ -18,10 +18,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # =========================================================================== #
 
-require_relative 'logging'
 require_relative 'google_auth'
 require_relative 'ohana_menu'
 require_relative 'ohana_ops'
+require_relative 'ohana_out'
 require 'yaml'
 
 module OHANA
@@ -30,8 +30,9 @@ module OHANA
     def init(args)
 
       puts "\n"
-      print_section_header("Ohana v0.0.1")
-      print_notice()
+      OhanaOut.initialize_logger()
+      OhanaOut.print_section_header("Ohana v0.0.1")
+      OhanaOut.print_notice()
       if args.key?('debug')
         $LOG.level = Logger::DEBUG
       end
@@ -53,7 +54,7 @@ module OHANA
         end
 
       rescue => e
-        print_error_msg_exc(e,"Unexpected error ocurred.")
+        OhanaOut.print_error_msg_exc(e,"Unexpected error ocurred.")
         exit
       end
     end
@@ -74,19 +75,7 @@ module OHANA
       # Initialize the gmail API
       # TODO: Initialize gmail API
       $LOG.debug("Google Gmail service initialized.")
-
-    end
-
-    def load_data()
-      puts "\n"
-      $LOG.debug('Obtaining required data...')
-      data = {}
-      spreadsheet_id = ""
-      range = ""
-      response = $sheetsService.get_spreadsheet_values(spreadsheet_id, range)
-      puts 'Values:'
-      puts 'No data found.' if response.values.empty?
-      puts response.values
+      
     end
   end
 end
