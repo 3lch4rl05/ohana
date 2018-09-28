@@ -18,8 +18,9 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # =========================================================================== #
 
-require_relative 'logging'
+require_relative 'ohana_out'
 require_relative 'ohana_menu'
+require_relative 'ohana_google'
 require 'fileutils'
 require 'csv'
 
@@ -49,6 +50,27 @@ module OHANA
         end
       end
       prov_names_set.uniq!
+    end
+
+    ##
+    # Recursive function that performs a check on NaN values that could mean
+    # something was wrong with the calculations performed.
+    #
+    # @param results [Object] Results object to search NaN values from.
+    def self.quick_nan_check(results)
+
+      results.each do |result|
+        if(result.is_a?(Hash) || result.is_a?(Array))
+          success = quick_nan_check(result)
+          if !success
+            return success
+          end
+        else
+          if(result.is_a?(Numeric))
+            return !result.to_f.nan?
+          end
+        end
+      end
     end
 
     ##
@@ -111,7 +133,7 @@ module OHANA
             # ammount in the map.
             if(!transactions[row_key].nil?)
               prev_row = transactions[row_key][1]
-              formatted_amnt = format_float(prev_row["amnt"])
+              formatted_amnt = OhanaOut.format_float(prev_row["amnt"])
               key_output = "#{prev_row["date"]}  "\
                            "#{prev_row["desc"].ljust(55)} "\
                            "$#{formatted_amnt.to_s.rjust(10)}"
@@ -123,7 +145,7 @@ module OHANA
               # actual duplicate but from a different file.
               if(transactions[row_key][0] != file_name)
                 puts "     SKIPPED".red.ljust(22)
-              elsif
+              else
 
                 # If the duplicate comes from the same file, it is less probable
                 # that it is an actual duplicate but a transaction that just
@@ -262,28 +284,104 @@ module OHANA
         end
       end
 
-      puts "\nOhana".cyan + " finished analyzing the bank reports provided.\n"\
-           "These are the estimates based on the information available:\n\n"
-      puts "-"*30
+      # We perform a basic check of the results before presenting them to the
+      # user just to make sure there are no NaN values in final results.
+      if(quick_nan_check(totals_per_expense))
 
-      totals_per_expense.each do |expense|
-        format_expense = format_float(expense[1]['month_avg'])
-        format_expense = format_expense.rjust(9)
-        expense_info = $props["fe"]["expenses"][expense[0]]
-        if(!expense_info.nil?)
-          expense_alias = expense_info["alias"]
-          puts "- #{expense_alias.ljust(18)} $" + "#{format_expense}".brown
-        elsif
-          puts "- #{expense[0].ljust(18)} $" + "#{format_expense}".brown
+        puts "\nOhana".cyan + " finished analyzing the bank reports provided.\n"\
+             "These are the estimates based on the information available:\n\n"
+        puts "-"*30
+
+        totals_per_expense.each do |expense|
+          format_expense = OhanaOut.format_float(expense[1]['month_avg'])
+          format_expense = format_expense.rjust(9)
+          expense_info = $props["fe"]["expenses"][expense[0]]
+          if(!expense_info.nil?)
+            expense_alias = expense_info["alias"]
+            puts "- #{expense_alias.ljust(18)} $" + "#{format_expense}".brown
+          elsif
+            puts "- #{expense[0].ljust(18)} $" + "#{format_expense}".brown
+          end
         end
+        puts "-"*30
+        puts "\n"
+
+        # Now, we ask the user if he would like to update the spreadsheet with
+        # the calculated data.
+        confirm = OhanaMenu.confirm_sheet_modif()
+        if "Y" == confirm
+          update_gss_fixed_expenses(totals_per_expense)
+        end
+      else
+
+        puts "\n\nSeems that some of the results were not calculated successfully :(".red
+        print "Please make sure folder contains " + "valid reports and valid data".cyan
+        puts ".\n"
+
       end
-      puts "-"*30
-      puts "\n"
-      confirm = OhanaMenu.confirm_sheet_modif()
-      if "Y" == confirm
-        sheet_name = "my sheet"
-        puts "Updating values in sheet: #{sheet_name}"
+    end
+
+    ##
+    # This function allows Ohana to update the desired spreadsheet with the
+    # freshly calculated fixed expenses estimation data. For this, we use the
+    # ranges specified in the app properties file to determine where to inject
+    # this information.
+    #
+    # @param totals_per_expense [Hash] Map with the calculated fixed expenses estimations.
+    # @see https://stackoverflow.com/a/14091786
+    #   Original author of scan regex: sawa
+    def self.update_gss_fixed_expenses(totals_per_expense)
+
+      home_finances = $props["google"]["spread_sheets"]["home_finances"]
+      reseg_sheet = home_finances["sheets"]["resumen_egresos"]
+      range_for_names = reseg_sheet["ranges"]["fe"]["names"]
+
+      # We need to obtain the names of the expenses from the spreadsheet to
+      # match them against the ones present in the app properties file. This
+      # is for the joined bills compound names and not for the single fixed
+      # expense provider names. For the latter, the appropiate cell to be
+      # modified is already specified under the 'google' section in the
+      # properties file.
+      exp_names = OhanaGoogleSheets.read_cell_values(
+        home_finances["id"], "#{reseg_sheet['name']}!#{range_for_names}")
+
+      # We iterate the data to get the calculated estimate for each expense
+      # type. For every different type of expense, Ohana will get its
+      # respective cell from application properties file.
+      totals_per_expense.each do |expense|
+        exp_cell = reseg_sheet["ranges"]["fe"][expense[0]]
+        month_avg = expense[1]['month_avg']
+        val_array = Array.new
+        values = Array.new
+        values[0] = month_avg
+        val_array[0] = values
+
+        # For the 'joined-bills' calculated estimates, this code will try to
+        # discover which one is the correct cell to update matching the alias
+        # with whatever is in the name's colum.
+        if(exp_cell.nil?) then
+          cell_count = -1
+          expense_alias = expense[0]
+          exp_names.each do |name|
+            cell_count = cell_count + 1
+            if(name[0] == expense_alias)
+              breakfr
+            end
+          end
+
+          # First we obtain the specified range for the names column. We then
+          # split it to get the starting cell, we separate the columns from the
+          # row numbers with the regex,
+          first_in_range_info = range_for_names.split(":")[0].scan(/\d+|\D+/)
+          desired_col = first_in_range_info[0].next!
+          desired_row = first_in_range_info[1].to_i + cell_count
+          exp_cell = "#{desired_col}#{desired_row}"
+        end
+
+        OhanaGoogleSheets.write_cell_values(home_finances["id"], "#{reseg_sheet['name']}!#{exp_cell}", val_array)
       end
+      puts "Done!"
+
     end
 
     ##
