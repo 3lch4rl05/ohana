@@ -24,9 +24,11 @@ So, in summary, what can Ohana do?
 - [ ] It can connect to Google spreadsheets and update specific spreadsheets with the calculated data.  
 - [ ] It can connect to Google gmail to get information about your Amazon orders and give you a summary report.
 
-**NOTE:** This is still work in progress. I'm currently working on all these features myself and I will keep updating this repo as frequently as possible. You will know what features are ready by looking at the checkmarks on the list of features.
+**NOTE:** This is still work in progress. I'm currently working on all these features myself and I will keep updating this repo as frequently as possible. You will know what features are ready by looking at the checkmarks on the list above.
 
-**Sources:**
+
+
+**References:**
 
 The Word Ohana Is A Modern Invention  
 https://kenconklin.org/mediawiki/index.php?title=The_Word_%27Ohana_Is_A_Modern_Invention
