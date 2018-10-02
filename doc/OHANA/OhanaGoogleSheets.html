@@ -94,7 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>ohana_google.rb</dd>
+    <dd>lib/ohana/ohana_google.rb</dd>
   </dl>
   
 </div>
@@ -284,19 +284,15 @@ Google sheeet.</p>
 39
 40
 41
-42
-43
-44</pre>
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ohana_google.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/ohana/ohana_google.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_read_cell_values'>read_cell_values</span><span class='lparen'>(</span><span class='id identifier rubyid_spreadsheet_id'>spreadsheet_id</span><span class='comma'>,</span> <span class='id identifier rubyid_range'>range</span><span class='rparen'>)</span>
-
-  <span class='gvar'>$LOG</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Reading sheet ID: &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_spreadsheet_id'>spreadsheet_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;, range: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_range'>range</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='gvar'>$sheetsService</span><span class='period'>.</span><span class='id identifier rubyid_get_spreadsheet_values'>get_spreadsheet_values</span><span class='lparen'>(</span><span class='id identifier rubyid_spreadsheet_id'>spreadsheet_id</span><span class='comma'>,</span> <span class='id identifier rubyid_range'>range</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../OHANA.html" title="OHANA (module)">OHANA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Reading sheet ID: &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_spreadsheet_id'>spreadsheet_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;, range: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_range'>range</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../OHANA.html" title="OHANA (module)">OHANA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ss_service'>ss_service</span><span class='period'>.</span><span class='id identifier rubyid_get_spreadsheet_values'>get_spreadsheet_values</span><span class='lparen'>(</span><span class='id identifier rubyid_spreadsheet_id'>spreadsheet_id</span><span class='comma'>,</span> <span class='id identifier rubyid_range'>range</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>
-
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -318,23 +314,19 @@ Google sheeet.</p>
       <pre class="lines">
 
 
+44
+45
 46
 47
-48
-49
-50
-51
-52</pre>
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ohana_google.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/ohana/ohana_google.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_write_cell_values'>write_cell_values</span><span class='lparen'>(</span><span class='id identifier rubyid_spreadsheet_id'>spreadsheet_id</span><span class='comma'>,</span> <span class='id identifier rubyid_range'>range</span><span class='comma'>,</span> <span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
-
   <span class='id identifier rubyid_value_range_object'>value_range_object</span> <span class='op'>=</span> <span class='const'>Google</span><span class='op'>::</span><span class='const'>Apis</span><span class='op'>::</span><span class='const'>SheetsV4</span><span class='op'>::</span><span class='const'>ValueRange</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>range:</span> <span class='id identifier rubyid_range'>range</span><span class='comma'>,</span> <span class='label'>values:</span> <span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='gvar'>$sheetsService</span><span class='period'>.</span><span class='id identifier rubyid_update_spreadsheet_value'>update_spreadsheet_value</span><span class='lparen'>(</span><span class='id identifier rubyid_spreadsheet_id'>spreadsheet_id</span><span class='comma'>,</span>
-    <span class='id identifier rubyid_range'>range</span><span class='comma'>,</span> <span class='id identifier rubyid_value_range_object'>value_range_object</span><span class='comma'>,</span> <span class='label'>value_input_option:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RAW</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-
+  <span class='const'><span class='object_link'><a href="../OHANA.html" title="OHANA (module)">OHANA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ss_service'>ss_service</span><span class='period'>.</span><span class='id identifier rubyid_update_spreadsheet_value'>update_spreadsheet_value</span><span class='lparen'>(</span><span class='id identifier rubyid_spreadsheet_id'>spreadsheet_id</span><span class='comma'>,</span> <span class='id identifier rubyid_range'>range</span><span class='comma'>,</span> <span class='id identifier rubyid_value_range_object'>value_range_object</span><span class='comma'>,</span>
+                                            <span class='label'>value_input_option:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>RAW</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -346,9 +338,9 @@ Google sheeet.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Sep 27 22:00:27 2018 by
+  Generated on Tue Oct  2 16:27:43 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.4.1).
+  0.9.16 (ruby-2.5.1).
 </div>
 
     </div>

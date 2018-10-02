@@ -94,12 +94,40 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>ohana_init.rb</dd>
+    <dd>lib/ohana/ohana_init.rb</dd>
   </dl>
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>This class is responsible for initializing several parts required by Ohana
+like the app properties, the logger, Google API services, etc.</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Carlos Garcia Velasco &lt;mail.charlitos@gmail.com&gt;</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
 
 
 
@@ -118,28 +146,6 @@
   <span class="summary_signature">
     
       <a href="#init-instance_method" title="#init (instance method)">#<strong>init</strong>(args)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#initialize_app_props-instance_method" title="#initialize_app_props (instance method)">#<strong>initialize_app_props</strong>  &#x21d2; Object </a>
     
 
     
@@ -204,12 +210,6 @@
       <pre class="lines">
 
 
-30
-31
-32
-33
-34
-35
 36
 37
 38
@@ -237,70 +237,32 @@
 60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ohana_init.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/ohana/ohana_init.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
-  <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_initialize_logger'><span class='object_link'><a href="OhanaOut.html#initialize_logger-class_method" title="OHANA::OhanaOut.initialize_logger (method)">initialize_logger</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_print_section_header'><span class='object_link'><a href="OhanaOut.html#print_section_header-class_method" title="OHANA::OhanaOut.print_section_header (method)">print_section_header</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Ohana v0.0.1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_print_notice'><span class='object_link'><a href="OhanaOut.html#print_notice-class_method" title="OHANA::OhanaOut.print_notice (method)">print_notice</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>debug</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-    <span class='gvar'>$LOG</span><span class='period'>.</span><span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='const'>Logger</span><span class='op'>::</span><span class='const'>DEBUG</span>
-  <span class='kw'>end</span>
+  <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_initialize_logger'><span class='object_link'><a href="OhanaOut.html#initialize_logger-class_method" title="OHANA::OhanaOut.initialize_logger (method)">initialize_logger</a></span></span>
+  <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_print_init_msg'><span class='object_link'><a href="OhanaOut.html#print_init_msg-class_method" title="OHANA::OhanaOut.print_init_msg (method)">print_init_msg</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ohana</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_print_notice'><span class='object_link'><a href="OhanaOut.html#print_notice-class_method" title="OHANA::OhanaOut.print_notice (method)">print_notice</a></span></span>
+  <span class='const'><span class='object_link'><a href="../OHANA.html" title="OHANA (module)">OHANA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='const'>Logger</span><span class='op'>::</span><span class='const'>DEBUG</span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>debug</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
   <span class='kw'>begin</span>
-
-    <span class='id identifier rubyid_initialize_app_props'>initialize_app_props</span><span class='lparen'>(</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_initialize_google_services'>initialize_google_services</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_initialize_google_services'>initialize_google_services</span>
     <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
-      <span class='const'><span class='object_link'><a href="OhanaMenu.html" title="OHANA::OhanaMenu (class)">OhanaMenu</a></span></span><span class='period'>.</span><span class='id identifier rubyid_main_menu'><span class='object_link'><a href="OhanaMenu.html#main_menu-class_method" title="OHANA::OhanaMenu.main_menu (method)">main_menu</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+      <span class='const'><span class='object_link'><a href="OhanaMenu.html" title="OHANA::OhanaMenu (class)">OhanaMenu</a></span></span><span class='period'>.</span><span class='id identifier rubyid_display_main_menu'><span class='object_link'><a href="OhanaMenu.html#display_main_menu-class_method" title="OHANA::OhanaMenu.display_main_menu (method)">display_main_menu</a></span></span>
       <span class='kw'>break</span> <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="OhanaMenu.html" title="OHANA::OhanaMenu (class)">OhanaMenu</a></span></span><span class='period'>.</span><span class='id identifier rubyid_option'><span class='object_link'><a href="OhanaMenu.html#option-class_method" title="OHANA::OhanaMenu.option (method)">option</a></span></span> <span class='op'>==</span> <span class='int'>9</span>
 
       <span class='kw'>case</span> <span class='const'><span class='object_link'><a href="OhanaMenu.html" title="OHANA::OhanaMenu (class)">OhanaMenu</a></span></span><span class='period'>.</span><span class='id identifier rubyid_option'><span class='object_link'><a href="OhanaMenu.html#option-class_method" title="OHANA::OhanaMenu.option (method)">option</a></span></span>
       <span class='kw'>when</span> <span class='int'>1</span>
-        <span class='const'><span class='object_link'><a href="OhanaOps.html" title="OHANA::OhanaOps (class)">OhanaOps</a></span></span><span class='period'>.</span><span class='id identifier rubyid_estimate_fixed_expenses'><span class='object_link'><a href="OhanaOps.html#estimate_fixed_expenses-class_method" title="OHANA::OhanaOps.estimate_fixed_expenses (method)">estimate_fixed_expenses</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+        <span class='const'><span class='object_link'><a href="OhanaOps.html" title="OHANA::OhanaOps (class)">OhanaOps</a></span></span><span class='period'>.</span><span class='id identifier rubyid_estimate_fixed_expenses'><span class='object_link'><a href="OhanaOps.html#estimate_fixed_expenses-class_method" title="OHANA::OhanaOps.estimate_fixed_expenses (method)">estimate_fixed_expenses</a></span></span>
       <span class='kw'>when</span> <span class='int'>2</span>
-        <span class='const'><span class='object_link'><a href="OhanaOps.html" title="OHANA::OhanaOps (class)">OhanaOps</a></span></span><span class='period'>.</span><span class='id identifier rubyid_prepare_monthly_summary'>prepare_monthly_summary</span><span class='lparen'>(</span><span class='rparen'>)</span>
+        <span class='const'><span class='object_link'><a href="OhanaOps.html" title="OHANA::OhanaOps (class)">OhanaOps</a></span></span><span class='period'>.</span><span class='id identifier rubyid_prepare_cc_for_month'><span class='object_link'><a href="OhanaOps.html#prepare_cc_for_month-class_method" title="OHANA::OhanaOps.prepare_cc_for_month (method)">prepare_cc_for_month</a></span></span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
-
-  <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
-    <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_print_error_msg_exc'><span class='object_link'><a href="OhanaOut.html#print_error_msg_exc-class_method" title="OHANA::OhanaOut.print_error_msg_exc (method)">print_error_msg_exc</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unexpected error ocurred.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>StandardError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_print_error_msg_exc'><span class='object_link'><a href="OhanaOut.html#print_error_msg_exc-class_method" title="OHANA::OhanaOut.print_error_msg_exc (method)">print_error_msg_exc</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Unexpected error ocurred.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_exit'>exit</span>
   <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="initialize_app_props-instance_method">
-  
-    #<strong>initialize_app_props</strong>  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-62
-63
-64
-65</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'ohana_init.rb', line 62</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize_app_props'>initialize_app_props</span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='gvar'>$props</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>app_props.yaml</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='gvar'>$LOG</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>App properties loaded.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -322,35 +284,33 @@
       <pre class="lines">
 
 
+62
+63
+64
+65
+66
 67
 68
 69
 70
 71
 72
-73
-74
-75
-76
-77
-78
-79</pre>
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ohana_init.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/ohana/ohana_init.rb', line 62</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize_google_services'>initialize_google_services</span><span class='lparen'>(</span><span class='rparen'>)</span>
-
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize_google_services'>initialize_google_services</span>
   <span class='comment'># Initialize the sheets API
-</span>  <span class='gvar'>$sheetsService</span> <span class='op'>=</span> <span class='const'>Google</span><span class='op'>::</span><span class='const'>Apis</span><span class='op'>::</span><span class='const'>SheetsV4</span><span class='op'>::</span><span class='const'>SheetsService</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-  <span class='gvar'>$sheetsService</span><span class='period'>.</span><span class='id identifier rubyid_client_options'>client_options</span><span class='period'>.</span><span class='id identifier rubyid_application_name'>application_name</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../top-level-namespace.html#APPLICATION_NAME-constant" title="APPLICATION_NAME (constant)">APPLICATION_NAME</a></span></span>
-  <span class='gvar'>$sheetsService</span><span class='period'>.</span><span class='id identifier rubyid_authorization'>authorization</span> <span class='op'>=</span> <span class='id identifier rubyid_authorize'><span class='object_link'><a href="../top-level-namespace.html#authorize-instance_method" title="#authorize (method)">authorize</a></span></span>
-  <span class='gvar'>$LOG</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Google Sheets service initialized.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_ss'>ss</span> <span class='op'>=</span> <span class='const'>Google</span><span class='op'>::</span><span class='const'>Apis</span><span class='op'>::</span><span class='const'>SheetsV4</span><span class='op'>::</span><span class='const'>SheetsService</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_ss'>ss</span><span class='period'>.</span><span class='id identifier rubyid_client_options'>client_options</span><span class='period'>.</span><span class='id identifier rubyid_application_name'>application_name</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../top-level-namespace.html#APPLICATION_NAME-constant" title="APPLICATION_NAME (constant)">APPLICATION_NAME</a></span></span>
+  <span class='id identifier rubyid_ss'>ss</span><span class='period'>.</span><span class='id identifier rubyid_authorization'>authorization</span> <span class='op'>=</span> <span class='id identifier rubyid_authorize'><span class='object_link'><a href="../top-level-namespace.html#authorize-instance_method" title="#authorize (method)">authorize</a></span></span>
+  <span class='const'><span class='object_link'><a href="../OHANA.html" title="OHANA (module)">OHANA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ss_service'>ss_service</span> <span class='op'>=</span> <span class='id identifier rubyid_ss'>ss</span>
+  <span class='const'><span class='object_link'><a href="../OHANA.html" title="OHANA (module)">OHANA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Google Sheets service initialized.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
   <span class='comment'># Initialize the gmail API
 </span>  <span class='comment'># TODO: Initialize gmail API
-</span>  <span class='gvar'>$LOG</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Google Gmail service initialized.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  
+</span>  <span class='const'><span class='object_link'><a href="../OHANA.html" title="OHANA (module)">OHANA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Google Gmail service initialized.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -362,9 +322,9 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Sep 27 22:00:27 2018 by
+  Generated on Tue Oct  2 16:27:43 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.4.1).
+  0.9.16 (ruby-2.5.1).
 </div>
 
     </div>
