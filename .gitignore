@@ -1,6 +1,6 @@
-app_props.yaml
+app_props.yml
 credentials.json
-token.yaml
+token.yml
 .yardoc
-.DS_Store
-example_output_get_trans.txt
+*.gem
+pkg/
