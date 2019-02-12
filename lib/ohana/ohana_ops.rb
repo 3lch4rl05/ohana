@@ -340,8 +340,9 @@ module OHANA
     # a Google spreadsheet with the calculated results.
     #
     # @param month [Integer] The month we want the summary prepared for.
-    def self.prepare_cc_for_month(month = Date.today.strftime('%B'))
-      puts "Preparing details for credit cards for month: #{month}...\n"
+    def self.prepare_cc_for_month(month = Time.now.month)
+      month_str = month.strftime('%B')
+      puts 'Preparing details for credit cards for month: ' + month_str.magenta + '...'
     end
 
   end

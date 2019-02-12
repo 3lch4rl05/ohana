@@ -103,7 +103,7 @@
   <div class="discussion">
     
 <p>This class is responsible for initializing several parts required by Ohana
-like the app properties, the logger, Google API services, etc.</p>
+like the the logger, Google API services, etc.</p>
 
 
   </div>
@@ -234,13 +234,15 @@ like the app properties, the logger, Google API services, etc.</p>
 57
 58
 59
-60</pre>
+60
+61</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ohana/ohana_init.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'><span class='object_link'><a href="../OHANA.html" title="OHANA (module)">OHANA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_props'>props</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>app_props.yml</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_initialize_logger'><span class='object_link'><a href="OhanaOut.html#initialize_logger-class_method" title="OHANA::OhanaOut.initialize_logger (method)">initialize_logger</a></span></span>
   <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_print_init_msg'><span class='object_link'><a href="OhanaOut.html#print_init_msg-class_method" title="OHANA::OhanaOut.print_init_msg (method)">print_init_msg</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ohana</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="OhanaOut.html" title="OHANA::OhanaOut (class)">OhanaOut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_print_notice'><span class='object_link'><a href="OhanaOut.html#print_notice-class_method" title="OHANA::OhanaOut.print_notice (method)">print_notice</a></span></span>
@@ -256,7 +258,7 @@ like the app properties, the logger, Google API services, etc.</p>
       <span class='kw'>when</span> <span class='int'>1</span>
         <span class='const'><span class='object_link'><a href="OhanaOps.html" title="OHANA::OhanaOps (class)">OhanaOps</a></span></span><span class='period'>.</span><span class='id identifier rubyid_estimate_fixed_expenses'><span class='object_link'><a href="OhanaOps.html#estimate_fixed_expenses-class_method" title="OHANA::OhanaOps.estimate_fixed_expenses (method)">estimate_fixed_expenses</a></span></span>
       <span class='kw'>when</span> <span class='int'>2</span>
-        <span class='const'><span class='object_link'><a href="OhanaOps.html" title="OHANA::OhanaOps (class)">OhanaOps</a></span></span><span class='period'>.</span><span class='id identifier rubyid_prepare_cc_for_month'><span class='object_link'><a href="OhanaOps.html#prepare_cc_for_month-class_method" title="OHANA::OhanaOps.prepare_cc_for_month (method)">prepare_cc_for_month</a></span></span>
+        <span class='const'><span class='object_link'><a href="OhanaOps.html" title="OHANA::OhanaOps (class)">OhanaOps</a></span></span><span class='period'>.</span><span class='id identifier rubyid_prepare_cc_for_month'><span class='object_link'><a href="OhanaOps.html#prepare_cc_for_month-class_method" title="OHANA::OhanaOps.prepare_cc_for_month (method)">prepare_cc_for_month</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="OhanaMenu.html" title="OHANA::OhanaMenu (class)">OhanaMenu</a></span></span><span class='period'>.</span><span class='id identifier rubyid_curr_sel'><span class='object_link'><a href="OhanaMenu.html#curr_sel-class_method" title="OHANA::OhanaMenu.curr_sel (method)">curr_sel</a></span></span><span class='rparen'>)</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>rescue</span> <span class='const'>StandardError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
@@ -284,7 +286,6 @@ like the app properties, the logger, Google API services, etc.</p>
       <pre class="lines">
 
 
-62
 63
 64
 65
@@ -295,10 +296,11 @@ like the app properties, the logger, Google API services, etc.</p>
 70
 71
 72
-73</pre>
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ohana/ohana_init.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/ohana/ohana_init.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize_google_services'>initialize_google_services</span>
   <span class='comment'># Initialize the sheets API
@@ -322,7 +324,7 @@ like the app properties, the logger, Google API services, etc.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Oct  2 16:27:43 2018 by
+  Generated on Fri Oct 12 11:39:38 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.5.1).
 </div>

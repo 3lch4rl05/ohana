@@ -22,3 +22,6 @@ task prepare_install: %i[tests yard build]
 
 desc 'Do it all!'
 task all: %i[prepare_install install]
+
+desc 'Default'
+task default: %i[all]

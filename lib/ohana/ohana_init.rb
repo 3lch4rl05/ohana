@@ -28,13 +28,14 @@ module OHANA
 
   ##
   # This class is responsible for initializing several parts required by Ohana
-  # like the app properties, the logger, Google API services, etc.
+  # like the the logger, Google API services, etc.
   #
   # @author Carlos Garcia Velasco <mail.charlitos@gmail.com>
   class OhanaInit
 
     def init(args)
       puts "\n"
+      OHANA.props = YAML.load_file('app_props.yml')
       OhanaOut.initialize_logger
       OhanaOut.print_init_msg('ohana')
       OhanaOut.print_notice
@@ -50,7 +51,7 @@ module OHANA
           when 1
             OhanaOps.estimate_fixed_expenses
           when 2
-            OhanaOps.prepare_cc_for_month
+            OhanaOps.prepare_cc_for_month(OhanaMenu.curr_sel)
           end
         end
       rescue StandardError => e

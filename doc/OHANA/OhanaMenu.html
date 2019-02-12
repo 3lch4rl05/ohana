@@ -138,6 +138,33 @@ reading/validating all the user&#39;s input.</p>
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#curr_sel-class_method" title="curr_sel (class method)">.<strong>curr_sel</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute curr_sel.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#option-class_method" title="option (class method)">.<strong>option</strong>  &#x21d2; Object </a>
     
 
@@ -271,9 +298,52 @@ reading/validating all the user&#39;s input.</p>
     <h2>Class Attribute Details</h2>
     
       
-      <span id="option=-class_method"></span>
+      <span id="curr_sel=-class_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="option-class_method">
+  <h3 class="signature first" id="curr_sel-class_method">
+  
+    .<strong>curr_sel</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute curr_sel</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ohana/ohana_menu.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_curr_sel'>curr_sel</span>
+  <span class='ivar'>@curr_sel</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="option=-class_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="option-class_method">
   
     .<strong>option</strong>  &#x21d2; <tt>Object</tt> 
   
@@ -335,16 +405,16 @@ reading/validating all the user&#39;s input.</p>
       <pre class="lines">
 
 
-76
-77
-78
-79
-80
-81
-82</pre>
+84
+85
+86
+87
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ohana/ohana_menu.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/ohana/ohana_menu.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_confirm_sheet_modif'>confirm_sheet_modif</span>
   <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Update your spreadsheet</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_cyan'>cyan</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> with these values? </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>(y/n): </span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_green'>green</span>
@@ -416,7 +486,7 @@ reading/validating all the user&#39;s input.</p>
   <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="" title="OHANA::OhanaMenu (class)">OhanaMenu</a></span></span><span class='period'>.</span><span class='id identifier rubyid_option'><span class='object_link'><a href="#option-class_method" title="OHANA::OhanaMenu.option (method)">option</a></span></span> <span class='op'>==</span> <span class='int'>1</span>
     <span class='id identifier rubyid_start_01'>start_01</span>
   <span class='kw'>elsif</span> <span class='const'><span class='object_link'><a href="" title="OHANA::OhanaMenu (class)">OhanaMenu</a></span></span><span class='period'>.</span><span class='id identifier rubyid_option'><span class='object_link'><a href="#option-class_method" title="OHANA::OhanaMenu.option (method)">option</a></span></span> <span class='op'>==</span> <span class='int'>2</span>
-    <span class='id identifier rubyid_start_02'>start_02</span>
+    <span class='const'><span class='object_link'><a href="" title="OHANA::OhanaMenu (class)">OhanaMenu</a></span></span><span class='period'>.</span><span class='id identifier rubyid_curr_sel'><span class='object_link'><a href="#curr_sel-class_method" title="OHANA::OhanaMenu.curr_sel (method)">curr_sel</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_start_02'>start_02</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -481,7 +551,15 @@ reading/validating all the user&#39;s input.</p>
 71
 72
 73
-74</pre>
+74
+75
+76
+77
+78
+79
+80
+81
+82</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ohana/ohana_menu.rb', line 70</span>
@@ -490,6 +568,14 @@ reading/validating all the user&#39;s input.</p>
   <span class='id identifier rubyid_month'>month</span> <span class='op'>=</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%B</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\nOhana will now prepare the monthly expenses summary for </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_month'>month</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>\
        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>based on bank reports located in the reports folder.\n\n</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Do you prefer a different month?\n\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Please press enter to continue with </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_month'>month</span><span class='embexpr_end'>}</span><span class='tstring_content'> or you can change it by </span><span class='tstring_end'>&quot;</span></span>\
+        <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pressing 1 for January, 2 for February, etc: </span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_month_val'>month_val</span> <span class='op'>=</span> <span class='const'>STDIN</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span>
+  <span class='id identifier rubyid_month_val'>month_val</span><span class='period'>.</span><span class='id identifier rubyid_chomp!'>chomp!</span>
+  <span class='id identifier rubyid_month_val'>month_val</span> <span class='op'>=</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_conf_val'>conf_val</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='id identifier rubyid_month_val'>month_val</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -501,7 +587,7 @@ reading/validating all the user&#39;s input.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Oct  2 16:27:43 2018 by
+  Generated on Fri Oct 12 11:39:38 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.5.1).
 </div>

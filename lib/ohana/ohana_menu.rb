@@ -33,7 +33,7 @@ module OHANA
 
     class << self
 
-      attr_accessor :option
+      attr_accessor(:option, :curr_sel)
 
     end
 
@@ -55,7 +55,7 @@ module OHANA
       if OhanaMenu.option == 1
         start_01
       elsif OhanaMenu.option == 2
-        start_02
+        OhanaMenu.curr_sel = start_02
       end
     end
 
@@ -71,6 +71,14 @@ module OHANA
       month = Date.today.strftime('%B')
       puts "\n\nOhana will now prepare the monthly expenses summary for #{month} "\
            "based on bank reports located in the reports folder.\n\n"
+
+      puts "Do you prefer a different month?\n\n"
+      print "Please press enter to continue with #{month} or you can change it by "\
+            'pressing 1 for January, 2 for February, etc: '
+      month_val = STDIN.gets
+      month_val.chomp!
+      month_val = nil if conf_val.empty?
+      month_val
     end
 
     def self.confirm_sheet_modif

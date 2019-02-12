@@ -197,7 +197,7 @@ reports folder for the bank and account specified.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#prepare_cc_for_month-class_method" title="prepare_cc_for_month (class method)">.<strong>prepare_cc_for_month</strong>(month = Date.today.strftime(&#39;%B&#39;))  &#x21d2; Object </a>
+      <a href="#prepare_cc_for_month-class_method" title="prepare_cc_for_month (class method)">.<strong>prepare_cc_for_month</strong>(month = Time.now.month)  &#x21d2; Object </a>
     
 
     
@@ -851,7 +851,7 @@ specified, it will use <code>Time.now</code> as the end limit.</p>
       <div class="method_details ">
   <h3 class="signature " id="prepare_cc_for_month-class_method">
   
-    .<strong>prepare_cc_for_month</strong>(month = Date.today.strftime(&#39;%B&#39;))  &#x21d2; <tt>Object</tt> 
+    .<strong>prepare_cc_for_month</strong>(month = Time.now.month)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -880,7 +880,7 @@ spreadsheet with the calculated results.</p>
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>Date.today.strftime(&#39;%B&#39;)</tt>)</em>
+        <em class="default">(defaults to: <tt>Time.now.month</tt>)</em>
       
       
         &mdash;
@@ -901,13 +901,15 @@ spreadsheet with the calculated results.</p>
 
 343
 344
-345</pre>
+345
+346</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ohana/ohana_ops.rb', line 343</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_prepare_cc_for_month'>prepare_cc_for_month</span><span class='lparen'>(</span><span class='id identifier rubyid_month'>month</span> <span class='op'>=</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%B</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Preparing details for credit cards for month: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_month'>month</span><span class='embexpr_end'>}</span><span class='tstring_content'>...\n</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_prepare_cc_for_month'>prepare_cc_for_month</span><span class='lparen'>(</span><span class='id identifier rubyid_month'>month</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_month'>month</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_month_str'>month_str</span> <span class='op'>=</span> <span class='id identifier rubyid_month'>month</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%B</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Preparing details for credit cards for month: </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_month_str'>month_str</span><span class='period'>.</span><span class='id identifier rubyid_magenta'>magenta</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1086,7 +1088,7 @@ this information.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Oct  2 16:27:43 2018 by
+  Generated on Fri Oct 12 11:39:38 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.5.1).
 </div>

@@ -23,19 +23,13 @@
 require 'ohana/ohana_init'
 
 ##
-# This module groups all the classes that belong to the main Ohana app.
-# This file is the executable responsible to read the arguments from
-# commandline and initialize the rest of the module with them.
+# To group all Ohana belonging to Ohana.
 #
-# @author Carlos Garcia Velasco <mail.charlitos@gmail.com>
 module OHANA
 
-  ##
-  # Accesors for OHANA module.
-  #
   class << self
 
-    attr_accessor :props, :logger, :ss_service
+    attr_accessor(:props, :logger, :ss_service)
 
   end
 
@@ -46,12 +40,11 @@ module OHANA
     exit
   end
 
-  OHANA.props = YAML.load_file('app_props.yml')
   ohana = OHANA::OhanaInit.new
   ohana.init(args)
 
-  at_exit do
-    puts "\nFinishing execution...\n\n".italic
-  end
+end
 
+at_exit do
+  puts "\nFinishing execution... :)\n\n".italic
 end
