@@ -28,3 +28,6 @@ Metrics/ClassLength:
 Metrics/BlockNesting:
   Max: 5
   CountBlocks: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never

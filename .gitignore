@@ -1,6 +1,7 @@
 app_props.yml
 credentials.json
 token.yml
+Gemfile.lock
 .yardoc
 *.gem
 pkg/
